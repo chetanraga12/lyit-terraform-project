@@ -4,8 +4,15 @@ This document is intended to track progress on this project, including that unre
 ## To-Do
 -everything
 
+## Notes
+-Lubuntu is used instead of Ubuntu because I work on a 10 year old desktop found in a shed
+-The machine has been upgraded to its full potential and still disappoints
+-VMs are assigned 3GB RAM
+-Everything is run on local hardware
+
 ### 10 May 2020
 -Completed introduction to GitHub
 -Installed Visual Studio Code
 -Installed Git
 -VMware incompatible with CPU (i5 750), switched to VirtualBox
+-Created VM running Lubuntu 20.04 LTS and fully cloned
