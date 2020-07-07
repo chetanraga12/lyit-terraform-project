@@ -39,7 +39,7 @@ resource "docker_container" "mysql-server" {
   name = "mysql_server"
   image = "${docker_image.mysql-server.latest}"
   restart = "always"
-  network = "container:iptables"
+  network = "dbnet"
   env {
     MYSQL_ROOT_HOST = "%"
     MYSQL_DATABASE = "db"
@@ -66,7 +66,7 @@ resource "docker_container" "phpmyadmin" {
   name = "php_admin"
   image = "${docker_image.phpmyadmin.latest}"
   restart = "always"
-  network = "container:iptables"
+  network = "dbnet"
   env {
     PMA_HOST = "mysql_server"
   }
