@@ -3,38 +3,44 @@ provider "docker" {
   host = "tcp://127.0.0.1:2376/"
 }
 
-#Docker network
-resource "docker_network" "private_network" {
-  name = "dbnet"
-  driver = "bridge"
-  subnet = "192.168.0.0/16"
-}
-
-#iptables
+#Docker images
 resource "docker_image" "iptables" {
-  name = "paulczar/iptables:latest"
+  name = "paulczar/iptables:master"
 }
 
-resource "docker_image" "iptables" {
-  name = "firewall"
-  image = "${docker_image.iptables.latest}"
-  restart = "always"
-  network = "host"
-  env {
-    TCP_PORTS = 8080, 3306
-    HOSTS = "192.168.0.0/16"
-  }
-  capabilities {
-    add = "NET_ADMIN"
-  }
-
-}
-
-#MySQL
 resource "docker_image" "mysql-server" {
   name = "mysql-server:latest"
 }
 
+resource "docker_image" "phpmyadmin" {
+  name = "phpmyadmin:latest"
+}
+
+#Docker network
+resource "docker_network" "private_network" {
+  name = "dbnet"
+  driver = "bridge"
+  options = "com.docker.network.bridge.name=dbnet"
+  subnet = "172.20.0.0/16"
+}
+
+#iptables - Alpine Linux-based firewall container
+resource "docker_container" "iptables" {
+  name = "firewall"
+  image = "${docker_image.iptables.master}"
+  restart = "always"
+  network = "host"
+  env {
+    TCP_PORTS = "8080,3306"
+    HOSTS = "172.20.0.0/16"
+  }
+  capabilities {
+    add = "NET_ADMIN"
+  }
+  command = ["/bin/ash", "iptables -A INPUT -i dbnet -j ACCEPT"]
+}
+
+#MySQL Server- database server container
 resource "docker_container" "mysql-server" {
   name = "mysql_server"
   image = "${docker_image.mysql-server.latest}"
@@ -58,10 +64,7 @@ resource "docker_container" "mysql-server" {
   }
 }
 
-#phpmyadmin
-  name = "phpmyadmin:latest"
-}
-
+#phpMyAdmin - php-based web-accessible database frontend container
 resource "docker_container" "phpmyadmin" {
   name = "php_admin"
   image = "${docker_image.phpmyadmin.latest}"
