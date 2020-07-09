@@ -1,0 +1,17 @@
+sudo docker exec -it mysql_server mysql -uroot -p
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '[newpassword]';
+
+sudo docker network create --opt com.docker.network.bridge.name=dbnet dbnet --driver=bridge --subnet=172.20.0.0/16 dbnet
+sudo docker pull paulczar/iptables:master
+sudo docker pull mysql/mysql-server:latest
+sudo docker pull phpmyadmin/phpmyadmin:latest
+
+sudo docker run --name mysql_server --net dbnet -e MYSQL_ROOT_HOST=% -e MYSQL_DATABASE=db -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=user1 -e MYSQL_PASSWORD=user1pass -d -p 3306:3306 --mount source=mysql-db,target=/var/lib/mysql mysql/mysql-server:latest
+
+sudo docker run --name php_admin --net dbnet -e PMA_HOST=mysql_server -d -p 8080:80 phpmyadmin/phpmyadmin:latest
+
+sudo docker run --name firewall --net host -e TCP_PORTS=8080,3306 -e HOSTS=172.20.0.0/16 --cap-add=NET_ADMIN paulczar/iptables:master
+
+iptables -A INPUT -i dbnet -j ACCEPT
+
+/etc/docker/daemon.json {"hosts": ["tcp://0.0.0.0:2375", "unix:///var/run/docker.sock"]}
