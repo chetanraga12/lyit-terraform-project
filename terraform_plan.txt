@@ -12,8 +12,46 @@ Resource actions are indicated with the following symbols:
 
 Terraform will perform the following actions:
 
-  + docker_container.mysql-server
+  + docker_container.iptables
       id:                                        <computed>
+      attach:                                    "false"
+      bridge:                                    <computed>
+      capabilities.#:                            "1"
+      capabilities.3481125753.add.#:             "1"
+      capabilities.3481125753.add.35540975:      "NET_ADMIN"
+      capabilities.3481125753.drop.#:            "0"
+      command.#:                                 "2"
+      command.0:                                 "/bin/ash"
+      command.1:                                 "iptables -A INPUT -i dbnet -j ACCEPT"
+      container_logs:                            <computed>
+      entrypoint.#:                              <computed>
+      env.#:                                     "2"
+      env.1701600104:                            "HOSTS=172.20.0.0/16"
+      env.3714558829:                            "TCP_PORTS=8080,3306"
+      exit_code:                                 <computed>
+      gateway:                                   <computed>
+      hostname:                                  <computed>
+      image:                                     "${docker_image.iptables.latest}"
+      ip_address:                                <computed>
+      ip_prefix_length:                          <computed>
+      ipc_mode:                                  <computed>
+      labels.#:                                  <computed>
+      log_driver:                                <computed>
+      log_opts.%:                                <computed>
+      logs:                                      "false"
+      must_run:                                  "true"
+      name:                                      "firewall"
+      network_data.#:                            <computed>
+      network_mode:                              "host"
+      read_only:                                 "false"
+      restart:                                   "always"
+      rm:                                        "false"
+      shm_size:                                  <computed>
+      start:                                     "true"
+      user:                                      <computed>
+
+  + docker_container.mysql-server
+      id:                                        <computed>                                                                                 
       attach:                                    "false"
       bridge:                                    <computed>
       command.#:                                 <computed>
@@ -134,7 +172,7 @@ Terraform will perform the following actions:
       scope:                                     <computed>
 
 
-Plan: 6 to add, 0 to change, 0 to destroy.
+Plan: 7 to add, 0 to change, 0 to destroy.
 
 ------------------------------------------------------------------------
 
