@@ -1,0 +1,490 @@
+dane@tfcontrol:~/Desktop$ terraform apply
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  + docker_container.iptables
+      id:                                        <computed>                                                                                 
+      attach:                                    "false"
+      bridge:                                    <computed>
+      capabilities.#:                            "1"
+      capabilities.3481125753.add.#:             "1"
+      capabilities.3481125753.add.35540975:      "NET_ADMIN"
+      capabilities.3481125753.drop.#:            "0"
+      command.#:                                 "2"
+      command.0:                                 "/bin/ash"
+      command.1:                                 "iptables -A INPUT -i dbnet -j ACCEPT"
+      container_logs:                            <computed>
+      entrypoint.#:                              <computed>
+      env.#:                                     "2"
+      env.1701600104:                            "HOSTS=172.20.0.0/16"
+      env.3714558829:                            "TCP_PORTS=8080,3306"
+      exit_code:                                 <computed>
+      gateway:                                   <computed>
+      hostname:                                  <computed>
+      image:                                     "${docker_image.iptables.latest}"
+      ip_address:                                <computed>
+      ip_prefix_length:                          <computed>
+      ipc_mode:                                  <computed>
+      labels.#:                                  <computed>
+      log_driver:                                <computed>
+      log_opts.%:                                <computed>
+      logs:                                      "false"
+      must_run:                                  "true"
+      name:                                      "firewall"
+      network_data.#:                            <computed>
+      network_mode:                              "host"
+      read_only:                                 "false"
+      restart:                                   "always"
+      rm:                                        "false"
+      shm_size:                                  <computed>
+      start:                                     "true"
+      user:                                      <computed>
+
+  + docker_container.mysql-server
+      id:                                        <computed>                                                                                 
+      attach:                                    "false"
+      bridge:                                    <computed>
+      command.#:                                 <computed>
+      container_logs:                            <computed>
+      entrypoint.#:                              <computed>
+      env.#:                                     "5"
+      env.1073599824:                            "MYSQL_ROOT_HOST=%"
+      env.1209668623:                            "MYSQL_DATABASE=db"
+      env.1367325977:                            "MYSQL_USER=user1"
+      env.3349882691:                            "MYSQL_ROOT_PASSWORD=root"
+      env.383955521:                             "MYSQL_PASSWORD=user1pass"
+      exit_code:                                 <computed>
+      gateway:                                   <computed>
+      hostname:                                  <computed>
+      image:                                     "${docker_image.mysql-server.latest}"
+      ip_address:                                <computed>
+      ip_prefix_length:                          <computed>
+      ipc_mode:                                  <computed>
+      labels.#:                                  <computed>
+      log_driver:                                <computed>
+      log_opts.%:                                <computed>
+      logs:                                      "false"
+      mounts.#:                                  "1"
+      mounts.1844972299.bind_options.#:          "0"
+      mounts.1844972299.read_only:               ""
+      mounts.1844972299.source:                  "mysql_db"
+      mounts.1844972299.target:                  "/var/lib/mysql"
+      mounts.1844972299.tmpfs_options.#:         "0"
+      mounts.1844972299.type:                    "volume"
+      mounts.1844972299.volume_options.#:        "0"
+      must_run:                                  "true"
+      name:                                      "mysql_server"
+      network_data.#:                            <computed>
+      networks_advanced.#:                       "1"
+      networks_advanced.3003536902.aliases.#:    "0"
+      networks_advanced.3003536902.ipv4_address: ""
+      networks_advanced.3003536902.ipv6_address: ""
+      networks_advanced.3003536902.name:         "dbnet"
+      ports.#:                                   "1"
+      ports.0.external:                          "3306"
+      ports.0.internal:                          "3306"
+      ports.0.ip:                                "0.0.0.0"
+      ports.0.protocol:                          "tcp"
+      read_only:                                 "false"
+      restart:                                   "always"
+      rm:                                        "false"
+      shm_size:                                  <computed>
+      start:                                     "true"
+      user:                                      <computed>
+
+  + docker_container.phpmyadmin
+      id:                                        <computed>                                                                                 
+      attach:                                    "false"
+      bridge:                                    <computed>
+      command.#:                                 <computed>
+      container_logs:                            <computed>
+      entrypoint.#:                              <computed>
+      env.#:                                     "1"
+      env.260412441:                             "PMA_HOST=mysql_server"
+      exit_code:                                 <computed>
+      gateway:                                   <computed>
+      hostname:                                  <computed>
+      image:                                     "${docker_image.phpmyadmin.latest}"
+      ip_address:                                <computed>
+      ip_prefix_length:                          <computed>
+      ipc_mode:                                  <computed>
+      labels.#:                                  <computed>
+      log_driver:                                <computed>
+      log_opts.%:                                <computed>
+      logs:                                      "false"
+      must_run:                                  "true"
+      name:                                      "php_admin"
+      network_data.#:                            <computed>
+      networks_advanced.#:                       "1"
+      networks_advanced.3003536902.aliases.#:    "0"
+      networks_advanced.3003536902.ipv4_address: ""
+      networks_advanced.3003536902.ipv6_address: ""
+      networks_advanced.3003536902.name:         "dbnet"
+      ports.#:                                   "1"
+      ports.0.external:                          "80"
+      ports.0.internal:                          "8080"
+      ports.0.ip:                                "0.0.0.0"
+      ports.0.protocol:                          "tcp"
+      read_only:                                 "false"
+      restart:                                   "always"
+      rm:                                        "false"
+      shm_size:                                  <computed>
+      start:                                     "true"
+      user:                                      <computed>
+
+  + docker_image.iptables
+      id:                                        <computed>                                                                                 
+      latest:                                    <computed>
+      name:                                      "paulczar/iptables:master"
+
+  + docker_image.mysql-server
+      id:                                        <computed>                                                                                 
+      latest:                                    <computed>
+      name:                                      "mysql/mysql-server:latest"
+
+  + docker_image.phpmyadmin
+      id:                                        <computed>                                                                                 
+      latest:                                    <computed>
+      name:                                      "phpmyadmin/phpmyadmin:latest"
+
+  + docker_network.private_network
+      id:                                        <computed>                                                                                 
+      driver:                                    "bridge"
+      internal:                                  <computed>
+      ipam_config.#:                             "1"
+      ipam_config.375909234.gateway:             ""
+      ipam_config.375909234.ip_range:            ""
+      ipam_config.375909234.subnet:              "172.20.0.0/16"
+      ipam_driver:                               "default"
+      name:                                      "dbnet"
+      options.%:                                 "1"
+      options.com.docker.network.bridge.name:    "dbnet"
+      scope:                                     <computed>
+
+
+Plan: 7 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+docker_image.phpmyadmin: Creating...
+  latest: "" => "<computed>"
+  name:   "" => "phpmyadmin/phpmyadmin:latest"
+docker_image.mysql-server: Creating...
+  latest: "" => "<computed>"
+  name:   "" => "mysql/mysql-server:latest"
+docker_network.private_network: Creating...
+  driver:                                 "" => "bridge"
+  internal:                               "" => "<computed>"
+  ipam_config.#:                          "" => "1"
+  ipam_config.375909234.gateway:          "" => ""
+  ipam_config.375909234.ip_range:         "" => ""
+  ipam_config.375909234.subnet:           "" => "172.20.0.0/16"
+  ipam_driver:                            "" => "default"
+  name:                                   "" => "dbnet"
+  options.%:                              "" => "1"
+  options.com.docker.network.bridge.name: "" => "dbnet"
+  scope:                                  "" => "<computed>"
+docker_image.iptables: Creating...
+  latest: "" => "<computed>"
+  name:   "" => "paulczar/iptables:master"
+docker_network.private_network: Creation complete after 4s (ID: fe6e1f5c282d3fd4d17707f439aa5f961677dc7fd0f1ac325115e1f1ad55f937)
+docker_image.iptables: Still creating... (10s elapsed)
+docker_image.phpmyadmin: Still creating... (10s elapsed)
+docker_image.mysql-server: Still creating... (10s elapsed)
+docker_image.mysql-server: Still creating... (20s elapsed)
+docker_image.iptables: Still creating... (20s elapsed)
+docker_image.phpmyadmin: Still creating... (20s elapsed)
+docker_image.phpmyadmin: Still creating... (30s elapsed)
+docker_image.mysql-server: Still creating... (30s elapsed)
+docker_image.iptables: Still creating... (30s elapsed)
+docker_image.iptables: Still creating... (40s elapsed)
+docker_image.phpmyadmin: Still creating... (40s elapsed)
+docker_image.mysql-server: Still creating... (40s elapsed)
+docker_image.mysql-server: Still creating... (50s elapsed)
+docker_image.iptables: Still creating... (50s elapsed)
+docker_image.phpmyadmin: Still creating... (50s elapsed)
+docker_image.phpmyadmin: Still creating... (1m0s elapsed)
+docker_image.mysql-server: Still creating... (1m0s elapsed)
+docker_image.iptables: Still creating... (1m0s elapsed)
+docker_image.iptables: Still creating... (1m10s elapsed)
+docker_image.phpmyadmin: Still creating... (1m10s elapsed)
+docker_image.mysql-server: Still creating... (1m10s elapsed)
+docker_image.mysql-server: Still creating... (1m20s elapsed)
+docker_image.iptables: Still creating... (1m20s elapsed)
+docker_image.phpmyadmin: Still creating... (1m20s elapsed)
+docker_image.phpmyadmin: Still creating... (1m30s elapsed)
+docker_image.mysql-server: Still creating... (1m30s elapsed)
+docker_image.iptables: Still creating... (1m30s elapsed)
+docker_image.iptables: Still creating... (1m40s elapsed)
+docker_image.phpmyadmin: Still creating... (1m40s elapsed)
+docker_image.mysql-server: Still creating... (1m40s elapsed)
+docker_image.mysql-server: Still creating... (1m50s elapsed)
+docker_image.iptables: Still creating... (1m50s elapsed)
+docker_image.phpmyadmin: Still creating... (1m50s elapsed)
+docker_image.phpmyadmin: Still creating... (2m0s elapsed)
+docker_image.mysql-server: Still creating... (2m0s elapsed)
+docker_image.iptables: Still creating... (2m0s elapsed)
+docker_image.iptables: Still creating... (2m10s elapsed)
+docker_image.phpmyadmin: Still creating... (2m10s elapsed)
+docker_image.mysql-server: Still creating... (2m10s elapsed)
+docker_image.mysql-server: Still creating... (2m20s elapsed)
+docker_image.iptables: Still creating... (2m20s elapsed)
+docker_image.phpmyadmin: Still creating... (2m20s elapsed)
+docker_image.phpmyadmin: Still creating... (2m30s elapsed)
+docker_image.mysql-server: Still creating... (2m30s elapsed)
+docker_image.iptables: Still creating... (2m30s elapsed)
+docker_image.iptables: Still creating... (2m40s elapsed)
+docker_image.phpmyadmin: Still creating... (2m40s elapsed)
+docker_image.mysql-server: Still creating... (2m40s elapsed)
+docker_image.mysql-server: Still creating... (2m50s elapsed)
+docker_image.iptables: Still creating... (2m50s elapsed)
+docker_image.phpmyadmin: Still creating... (2m50s elapsed)
+docker_image.phpmyadmin: Still creating... (3m0s elapsed)
+docker_image.mysql-server: Still creating... (3m0s elapsed)
+docker_image.iptables: Still creating... (3m0s elapsed)
+docker_image.iptables: Still creating... (3m10s elapsed)
+docker_image.phpmyadmin: Still creating... (3m10s elapsed)
+docker_image.mysql-server: Still creating... (3m10s elapsed)
+docker_image.mysql-server: Still creating... (3m20s elapsed)
+docker_image.iptables: Still creating... (3m20s elapsed)
+docker_image.phpmyadmin: Still creating... (3m20s elapsed)
+docker_image.phpmyadmin: Still creating... (3m30s elapsed)
+docker_image.mysql-server: Still creating... (3m30s elapsed)
+docker_image.iptables: Still creating... (3m30s elapsed)
+docker_image.iptables: Still creating... (3m40s elapsed)
+docker_image.phpmyadmin: Still creating... (3m40s elapsed)
+docker_image.mysql-server: Still creating... (3m40s elapsed)
+docker_image.mysql-server: Still creating... (3m50s elapsed)
+docker_image.iptables: Still creating... (3m50s elapsed)
+docker_image.phpmyadmin: Still creating... (3m50s elapsed)
+docker_image.phpmyadmin: Still creating... (4m0s elapsed)
+docker_image.mysql-server: Still creating... (4m0s elapsed)
+docker_image.iptables: Still creating... (4m0s elapsed)
+docker_image.iptables: Still creating... (4m10s elapsed)
+docker_image.phpmyadmin: Still creating... (4m10s elapsed)
+docker_image.mysql-server: Still creating... (4m10s elapsed)
+docker_image.mysql-server: Still creating... (4m20s elapsed)
+docker_image.iptables: Still creating... (4m20s elapsed)
+docker_image.phpmyadmin: Still creating... (4m20s elapsed)
+docker_image.phpmyadmin: Still creating... (4m30s elapsed)
+docker_image.mysql-server: Still creating... (4m30s elapsed)
+docker_image.iptables: Still creating... (4m30s elapsed)
+docker_image.iptables: Still creating... (4m40s elapsed)
+docker_image.phpmyadmin: Still creating... (4m40s elapsed)
+docker_image.mysql-server: Still creating... (4m40s elapsed)
+docker_image.mysql-server: Still creating... (4m50s elapsed)
+docker_image.iptables: Still creating... (4m50s elapsed)
+docker_image.phpmyadmin: Still creating... (4m50s elapsed)
+docker_image.phpmyadmin: Still creating... (5m0s elapsed)
+docker_image.mysql-server: Still creating... (5m0s elapsed)
+docker_image.iptables: Still creating... (5m0s elapsed)
+docker_image.iptables: Creation complete after 5m3s (ID: sha256:135b2c3b39e25f4c854c7c58c697bb06...7a29e8e845db62paulczar/iptables:master)
+docker_container.iptables: Creating...
+  attach:                               "" => "false"
+  bridge:                               "" => "<computed>"
+  capabilities.#:                       "" => "1"
+  capabilities.3481125753.add.#:        "" => "1"
+  capabilities.3481125753.add.35540975: "" => "NET_ADMIN"
+  capabilities.3481125753.drop.#:       "" => "0"
+  command.#:                            "" => "2"
+  command.0:                            "" => "/bin/ash"
+  command.1:                            "" => "iptables -A INPUT -i dbnet -j ACCEPT"
+  container_logs:                       "" => "<computed>"
+  entrypoint.#:                         "" => "<computed>"
+  env.#:                                "" => "2"
+  env.1701600104:                       "" => "HOSTS=172.20.0.0/16"
+  env.3714558829:                       "" => "TCP_PORTS=8080,3306"
+  exit_code:                            "" => "<computed>"
+  gateway:                              "" => "<computed>"
+  hostname:                             "" => "<computed>"
+  image:                                "" => "sha256:135b2c3b39e25f4c854c7c58c697bb06c8d192f4336b75d19e7a29e8e845db62"
+  ip_address:                           "" => "<computed>"
+  ip_prefix_length:                     "" => "<computed>"
+  ipc_mode:                             "" => "<computed>"
+  labels.#:                             "" => "<computed>"
+  log_driver:                           "" => "<computed>"
+  log_opts.%:                           "" => "<computed>"
+  logs:                                 "" => "false"
+  must_run:                             "" => "true"
+  name:                                 "" => "firewall"
+  network_data.#:                       "" => "<computed>"
+  network_mode:                         "" => "host"
+  read_only:                            "" => "false"
+  restart:                              "" => "always"
+  rm:                                   "" => "false"
+  shm_size:                             "" => "<computed>"
+  start:                                "" => "true"
+  user:                                 "" => "<computed>"
+docker_container.iptables: Creation complete after 2s (ID: 28ed554f19796ddb5370cf7637fe8e25c4b06f9d520884e9455eed48061cfa2a)
+docker_image.mysql-server: Still creating... (5m10s elapsed)
+docker_image.phpmyadmin: Still creating... (5m10s elapsed)
+docker_image.phpmyadmin: Still creating... (5m20s elapsed)
+docker_image.mysql-server: Still creating... (5m20s elapsed)
+docker_image.mysql-server: Still creating... (5m30s elapsed)
+docker_image.phpmyadmin: Still creating... (5m30s elapsed)
+docker_image.phpmyadmin: Still creating... (5m40s elapsed)
+docker_image.mysql-server: Still creating... (5m40s elapsed)
+docker_image.mysql-server: Still creating... (5m50s elapsed)
+docker_image.phpmyadmin: Still creating... (5m50s elapsed)
+docker_image.phpmyadmin: Still creating... (6m0s elapsed)
+docker_image.mysql-server: Still creating... (6m0s elapsed)
+docker_image.phpmyadmin: Still creating... (6m10s elapsed)
+docker_image.mysql-server: Still creating... (6m10s elapsed)
+docker_image.phpmyadmin: Still creating... (6m20s elapsed)
+docker_image.mysql-server: Still creating... (6m20s elapsed)
+docker_image.phpmyadmin: Still creating... (6m30s elapsed)
+docker_image.mysql-server: Still creating... (6m30s elapsed)
+docker_image.phpmyadmin: Still creating... (6m40s elapsed)
+docker_image.mysql-server: Still creating... (6m40s elapsed)
+docker_image.phpmyadmin: Still creating... (6m50s elapsed)
+docker_image.mysql-server: Still creating... (6m50s elapsed)
+docker_image.phpmyadmin: Still creating... (7m0s elapsed)
+docker_image.mysql-server: Still creating... (7m0s elapsed)
+docker_image.phpmyadmin: Still creating... (7m10s elapsed)
+docker_image.mysql-server: Still creating... (7m10s elapsed)
+docker_image.phpmyadmin: Still creating... (7m20s elapsed)
+docker_image.mysql-server: Still creating... (7m20s elapsed)
+docker_image.phpmyadmin: Still creating... (7m30s elapsed)
+docker_image.mysql-server: Still creating... (7m30s elapsed)
+docker_image.phpmyadmin: Still creating... (7m40s elapsed)
+docker_image.mysql-server: Still creating... (7m40s elapsed)
+docker_image.phpmyadmin: Still creating... (7m50s elapsed)
+docker_image.mysql-server: Still creating... (7m50s elapsed)
+docker_image.phpmyadmin: Still creating... (8m0s elapsed)
+docker_image.mysql-server: Still creating... (8m0s elapsed)
+docker_image.phpmyadmin: Still creating... (8m10s elapsed)
+docker_image.mysql-server: Still creating... (8m10s elapsed)
+docker_image.phpmyadmin: Still creating... (8m20s elapsed)
+docker_image.mysql-server: Still creating... (8m20s elapsed)
+docker_image.phpmyadmin: Still creating... (8m30s elapsed)
+docker_image.mysql-server: Still creating... (8m30s elapsed)
+docker_image.phpmyadmin: Still creating... (8m40s elapsed)
+docker_image.mysql-server: Still creating... (8m40s elapsed)
+docker_image.phpmyadmin: Still creating... (8m50s elapsed)
+docker_image.mysql-server: Still creating... (8m50s elapsed)
+docker_image.mysql-server: Still creating... (9m0s elapsed)
+docker_image.phpmyadmin: Still creating... (9m0s elapsed)
+docker_image.phpmyadmin: Still creating... (9m10s elapsed)
+docker_image.mysql-server: Still creating... (9m10s elapsed)
+docker_image.phpmyadmin: Creation complete after 9m15s (ID: sha256:6f9550cff1751cbc260cb30a48f9e8a2...96ab676090phpmyadmin/phpmyadmin:latest)
+docker_container.phpmyadmin: Creating...
+  attach:                                    "" => "false"
+  bridge:                                    "" => "<computed>"
+  command.#:                                 "" => "<computed>"
+  container_logs:                            "" => "<computed>"
+  entrypoint.#:                              "" => "<computed>"
+  env.#:                                     "" => "1"
+  env.260412441:                             "" => "PMA_HOST=mysql_server"
+  exit_code:                                 "" => "<computed>"
+  gateway:                                   "" => "<computed>"
+  hostname:                                  "" => "<computed>"
+  image:                                     "" => "sha256:6f9550cff1751cbc260cb30a48f9e8a2add91993db516fe3c7298596ab676090"
+  ip_address:                                "" => "<computed>"
+  ip_prefix_length:                          "" => "<computed>"
+  ipc_mode:                                  "" => "<computed>"
+  labels.#:                                  "" => "<computed>"
+  log_driver:                                "" => "<computed>"
+  log_opts.%:                                "" => "<computed>"
+  logs:                                      "" => "false"
+  must_run:                                  "" => "true"
+  name:                                      "" => "php_admin"
+  network_data.#:                            "" => "<computed>"
+  networks_advanced.#:                       "" => "1"
+  networks_advanced.3003536902.aliases.#:    "" => "0"
+  networks_advanced.3003536902.ipv4_address: "" => ""
+  networks_advanced.3003536902.ipv6_address: "" => ""
+  networks_advanced.3003536902.name:         "" => "dbnet"
+  ports.#:                                   "" => "1"
+  ports.0.external:                          "" => "80"
+  ports.0.internal:                          "" => "8080"
+  ports.0.ip:                                "" => "0.0.0.0"
+  ports.0.protocol:                          "" => "tcp"
+  read_only:                                 "" => "false"
+  restart:                                   "" => "always"
+  rm:                                        "" => "false"
+  shm_size:                                  "" => "<computed>"
+  start:                                     "" => "true"
+  user:                                      "" => "<computed>"
+docker_container.phpmyadmin: Creation complete after 4s (ID: eb168e4f36fecc991c5d5faded20540fe787dcb40e2f017f5e16da6a46b5060c)
+docker_image.mysql-server: Still creating... (9m20s elapsed)
+docker_image.mysql-server: Still creating... (9m30s elapsed)
+docker_image.mysql-server: Still creating... (9m40s elapsed)
+docker_image.mysql-server: Still creating... (9m50s elapsed)
+docker_image.mysql-server: Still creating... (10m0s elapsed)
+docker_image.mysql-server: Still creating... (10m10s elapsed)
+docker_image.mysql-server: Still creating... (10m20s elapsed)
+docker_image.mysql-server: Still creating... (10m30s elapsed)
+docker_image.mysql-server: Still creating... (10m40s elapsed)
+docker_image.mysql-server: Still creating... (10m50s elapsed)
+docker_image.mysql-server: Still creating... (11m0s elapsed)
+docker_image.mysql-server: Still creating... (11m10s elapsed)
+docker_image.mysql-server: Still creating... (11m20s elapsed)
+docker_image.mysql-server: Still creating... (11m30s elapsed)
+docker_image.mysql-server: Still creating... (11m40s elapsed)
+docker_image.mysql-server: Still creating... (11m50s elapsed)
+docker_image.mysql-server: Still creating... (12m0s elapsed)
+docker_image.mysql-server: Still creating... (12m10s elapsed)
+docker_image.mysql-server: Still creating... (12m20s elapsed)
+docker_image.mysql-server: Creation complete after 12m28s (ID: sha256:716286be47c6246fc8a1e0ce8435aa50...b616093fd6099mysql/mysql-server:latest)
+docker_container.mysql-server: Creating...
+  attach:                                    "" => "false"
+  bridge:                                    "" => "<computed>"
+  command.#:                                 "" => "<computed>"
+  container_logs:                            "" => "<computed>"
+  entrypoint.#:                              "" => "<computed>"
+  env.#:                                     "" => "5"
+  env.1073599824:                            "" => "MYSQL_ROOT_HOST=%"
+  env.1209668623:                            "" => "MYSQL_DATABASE=db"
+  env.1367325977:                            "" => "MYSQL_USER=user1"
+  env.3349882691:                            "" => "MYSQL_ROOT_PASSWORD=root"
+  env.383955521:                             "" => "MYSQL_PASSWORD=user1pass"
+  exit_code:                                 "" => "<computed>"
+  gateway:                                   "" => "<computed>"
+  hostname:                                  "" => "<computed>"
+  image:                                     "" => "sha256:716286be47c6246fc8a1e0ce8435aa50485b79521bf7d14f749b616093fd6099"
+  ip_address:                                "" => "<computed>"
+  ip_prefix_length:                          "" => "<computed>"
+  ipc_mode:                                  "" => "<computed>"
+  labels.#:                                  "" => "<computed>"
+  log_driver:                                "" => "<computed>"
+  log_opts.%:                                "" => "<computed>"
+  logs:                                      "" => "false"
+  mounts.#:                                  "" => "1"
+  mounts.1844972299.bind_options.#:          "" => "0"
+  mounts.1844972299.read_only:               "" => ""
+  mounts.1844972299.source:                  "" => "mysql_db"
+  mounts.1844972299.target:                  "" => "/var/lib/mysql"
+  mounts.1844972299.tmpfs_options.#:         "" => "0"
+  mounts.1844972299.type:                    "" => "volume"
+  mounts.1844972299.volume_options.#:        "" => "0"
+  must_run:                                  "" => "true"
+  name:                                      "" => "mysql_server"
+  network_data.#:                            "" => "<computed>"
+  networks_advanced.#:                       "" => "1"
+  networks_advanced.3003536902.aliases.#:    "" => "0"
+  networks_advanced.3003536902.ipv4_address: "" => ""
+  networks_advanced.3003536902.ipv6_address: "" => ""
+  networks_advanced.3003536902.name:         "" => "dbnet"
+  ports.#:                                   "" => "1"
+  ports.0.external:                          "" => "3306"
+  ports.0.internal:                          "" => "3306"
+  ports.0.ip:                                "" => "0.0.0.0"
+  ports.0.protocol:                          "" => "tcp"
+  read_only:                                 "" => "false"
+  restart:                                   "" => "always"
+  rm:                                        "" => "false"
+  shm_size:                                  "" => "<computed>"
+  start:                                     "" => "true"
+  user:                                      "" => "<computed>"
+docker_container.mysql-server: Creation complete after 5s (ID: 164ae5582dbb85255417614bb654ac915332bc9767ebf4807e3da137d68c865d)
+
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.                                                                                 
+dane@tfcontrol:~/Desktop$ 
