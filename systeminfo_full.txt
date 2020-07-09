@@ -1,0 +1,68 @@
+Host Name:                 DESKTOP-6C47R1D
+OS Name:                   Microsoft Windows 10 Pro
+OS Version:                10.0.18363 N/A Build 18363
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Workstation
+OS Build Type:             Multiprocessor Free
+Registered Owner:          [PERSONAL EMAIL ADDRESS REDACTED]
+Registered Organization:
+Product ID:                00330-80000-00000-AA980
+Original Install Date:     10/04/2020, 23:44:06
+System Boot Time:          02/07/2020, 18:18:51
+System Manufacturer:       Hewlett-Packard
+System Model:              HP Pro 3130 Microtower PC
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 30 Stepping 5 GenuineIntel ~2668 Mhz
+BIOS Version:              American Megatrends Inc. 6.14, 05/11/2010
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             en-us;English (United States)
+Input Locale:              en-ie;English (Ireland)
+Time Zone:                 (UTC+00:00) Dublin, Edinburgh, Lisbon, London
+Total Physical Memory:     8,151 MB
+Available Physical Memory: 2,773 MB
+Virtual Memory: Max Size:  9,431 MB
+Virtual Memory: Available: 1,856 MB
+Virtual Memory: In Use:    7,575 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    WORKGROUP
+Logon Server:              \\DESKTOP-6C47R1D
+Hotfix(s):                 12 Hotfix(s) Installed.
+                           [01]: KB4552931
+                           [02]: KB4497165
+                           [03]: KB4513661
+                           [04]: KB4516115
+                           [05]: KB4517245
+                           [06]: KB4521863
+                           [07]: KB4537759
+                           [08]: KB4541338
+                           [09]: KB4552152
+                           [10]: KB4560959
+                           [11]: KB4561600
+                           [12]: KB4560960
+Network Card(s):           4 NIC(s) Installed.
+                           [01]: Realtek PCIe GbE Family Controller
+                                 Connection Name: Ethernet
+                                 Status:          Media disconnected
+                           [02]: Realtek RTL8192EU Wireless LAN 802.11n USB 2.0 Network Adapter
+                                 Connection Name: Wi-Fi 2
+                                 DHCP Enabled:    Yes
+                                 DHCP Server:     192.168.1.1
+                                 IP address(es)
+                                 [01]: 192.168.1.9
+                                 [02]: fe80::916f:30f4:72b9:347c
+                           [03]: VirtualBox Host-Only Ethernet Adapter
+                                 Connection Name: VirtualBox Host-Only Network
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 192.168.56.1
+                                 [02]: fe80::9dea:a7be:4028:3154
+                           [04]: Hyper-V Virtual Ethernet Adapter
+                                 Connection Name: vEthernet (Default Switch)
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 172.17.243.1
+                                 [02]: fe80::7873:1346:1bc4:3199
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
