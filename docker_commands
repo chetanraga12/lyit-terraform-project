@@ -1,7 +1,7 @@
 sudo docker exec -it mysql_server mysql -uroot -p
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '[newpassword]';
 
-sudo docker network create --opt com.docker.network.bridge.name=dbnet dbnet --driver=bridge --subnet=172.20.0.0/16 dbnet
+sudo docker network create --opt com.docker.network.bridge.name=dbnet --driver=bridge --subnet=172.20.0.0/16 dbnet
 sudo docker pull paulczar/iptables:master
 sudo docker pull mysql/mysql-server:latest
 sudo docker pull phpmyadmin/phpmyadmin:latest
