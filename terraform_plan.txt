@@ -1,0 +1,145 @@
+dane@tfcontrol:~/Desktop$ terraform plan
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  + docker_container.mysql-server
+      id:                                        <computed>
+      attach:                                    "false"
+      bridge:                                    <computed>
+      command.#:                                 <computed>
+      container_logs:                            <computed>
+      entrypoint.#:                              <computed>
+      env.#:                                     "5"
+      env.1073599824:                            "MYSQL_ROOT_HOST=%"
+      env.1209668623:                            "MYSQL_DATABASE=db"
+      env.1367325977:                            "MYSQL_USER=user1"
+      env.3349882691:                            "MYSQL_ROOT_PASSWORD=root"
+      env.383955521:                             "MYSQL_PASSWORD=user1pass"
+      exit_code:                                 <computed>
+      gateway:                                   <computed>
+      hostname:                                  <computed>
+      image:                                     "${docker_image.mysql-server.latest}"
+      ip_address:                                <computed>
+      ip_prefix_length:                          <computed>
+      ipc_mode:                                  <computed>
+      labels.#:                                  <computed>
+      log_driver:                                <computed>
+      log_opts.%:                                <computed>
+      logs:                                      "false"
+      mounts.#:                                  "1"
+      mounts.1844972299.bind_options.#:          "0"
+      mounts.1844972299.read_only:               ""
+      mounts.1844972299.source:                  "mysql_db"
+      mounts.1844972299.target:                  "/var/lib/mysql"
+      mounts.1844972299.tmpfs_options.#:         "0"
+      mounts.1844972299.type:                    "volume"
+      mounts.1844972299.volume_options.#:        "0"
+      must_run:                                  "true"
+      name:                                      "mysql_server"
+      network_data.#:                            <computed>
+      networks_advanced.#:                       "1"
+      networks_advanced.3003536902.aliases.#:    "0"
+      networks_advanced.3003536902.ipv4_address: ""
+      networks_advanced.3003536902.ipv6_address: ""
+      networks_advanced.3003536902.name:         "dbnet"
+      ports.#:                                   "1"
+      ports.0.external:                          "3306"
+      ports.0.internal:                          "3306"
+      ports.0.ip:                                "0.0.0.0"
+      ports.0.protocol:                          "tcp"
+      read_only:                                 "false"
+      restart:                                   "always"
+      rm:                                        "false"
+      shm_size:                                  <computed>
+      start:                                     "true"
+      user:                                      <computed>
+
+  + docker_container.phpmyadmin
+      id:                                        <computed>                                                                                 
+      attach:                                    "false"
+      bridge:                                    <computed>
+      command.#:                                 <computed>
+      container_logs:                            <computed>
+      entrypoint.#:                              <computed>
+      env.#:                                     "1"
+      env.260412441:                             "PMA_HOST=mysql_server"
+      exit_code:                                 <computed>
+      gateway:                                   <computed>
+      hostname:                                  <computed>
+      image:                                     "${docker_image.phpmyadmin.latest}"
+      ip_address:                                <computed>
+      ip_prefix_length:                          <computed>
+      ipc_mode:                                  <computed>
+      labels.#:                                  <computed>
+      log_driver:                                <computed>
+      log_opts.%:                                <computed>
+      logs:                                      "false"
+      must_run:                                  "true"
+      name:                                      "php_admin"
+      network_data.#:                            <computed>
+      networks_advanced.#:                       "1"
+      networks_advanced.3003536902.aliases.#:    "0"
+      networks_advanced.3003536902.ipv4_address: ""
+      networks_advanced.3003536902.ipv6_address: ""
+      networks_advanced.3003536902.name:         "dbnet"
+      ports.#:                                   "1"
+      ports.0.external:                          "80"
+      ports.0.internal:                          "8080"
+      ports.0.ip:                                "0.0.0.0"
+      ports.0.protocol:                          "tcp"
+      read_only:                                 "false"
+      restart:                                   "always"
+      rm:                                        "false"
+      shm_size:                                  <computed>
+      start:                                     "true"
+      user:                                      <computed>
+
+  + docker_image.iptables
+      id:                                        <computed>                                                                                 
+      latest:                                    <computed>
+      name:                                      "paulczar/iptables:master"
+
+  + docker_image.mysql-server
+      id:                                        <computed>                                                                                 
+      latest:                                    <computed>
+      name:                                      "mysql/mysql-server:latest"
+
+  + docker_image.phpmyadmin
+      id:                                        <computed>                                                                                 
+      latest:                                    <computed>
+      name:                                      "phpmyadmin/phpmyadmin:latest"
+
+  + docker_network.private_network
+      id:                                        <computed>                                                                                 
+      driver:                                    "bridge"
+      internal:                                  <computed>
+      ipam_config.#:                             "1"
+      ipam_config.375909234.gateway:             ""
+      ipam_config.375909234.ip_range:            ""
+      ipam_config.375909234.subnet:              "172.20.0.0/16"
+      ipam_driver:                               "default"
+      name:                                      "dbnet"
+      options.%:                                 "1"
+      options.com.docker.network.bridge.name:    "dbnet"
+      scope:                                     <computed>
+
+
+Plan: 6 to add, 0 to change, 0 to destroy.
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+
+dane@tfcontrol:~/Desktop$ 
