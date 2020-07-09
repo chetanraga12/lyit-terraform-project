@@ -1,6 +1,6 @@
 #Docker provider
 provider "docker" {
-  host = "tcp://127.0.0.1:2376/"
+  host = "tcp://127.0.0.1:2375/"
 }
 
 #Docker images
@@ -9,11 +9,11 @@ resource "docker_image" "iptables" {
 }
 
 resource "docker_image" "mysql-server" {
-  name = "mysql-server:latest"
+  name = "mysql/mysql-server:latest"
 }
 
 resource "docker_image" "phpmyadmin" {
-  name = "phpmyadmin:latest"
+  name = "phpmyadmin/phpmyadmin:latest"
 }
 
 #Docker network
@@ -31,11 +31,9 @@ resource "docker_network" "private_network" {
 #iptables - Alpine Linux-based firewall container
 resource "docker_container" "iptables" {
   name = "firewall"
-  image = "${docker_image.iptables.master}"
+  image = "${docker_image.iptables.latest}"
   restart = "always"
-  networks_advanced { 
-  	name = "host"
-  }
+  network_mode = "host"
   env = [
   	"TCP_PORTS=8080,3306",
   	"HOSTS=172.20.0.0/16"
