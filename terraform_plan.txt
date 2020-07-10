@@ -13,7 +13,7 @@ Resource actions are indicated with the following symbols:
 Terraform will perform the following actions:
 
   + docker_container.iptables
-      id:                                        <computed>
+      id:                                        <computed>                  
       attach:                                    "false"
       bridge:                                    <computed>
       capabilities.#:                            "1"
@@ -51,7 +51,7 @@ Terraform will perform the following actions:
       user:                                      <computed>
 
   + docker_container.mysql-server
-      id:                                        <computed>                                                                                 
+      id:                                        <computed>                  
       attach:                                    "false"
       bridge:                                    <computed>
       command.#:                                 <computed>
@@ -86,10 +86,10 @@ Terraform will perform the following actions:
       name:                                      "mysql_server"
       network_data.#:                            <computed>
       networks_advanced.#:                       "1"
-      networks_advanced.3003536902.aliases.#:    "0"
-      networks_advanced.3003536902.ipv4_address: ""
-      networks_advanced.3003536902.ipv6_address: ""
-      networks_advanced.3003536902.name:         "dbnet"
+      networks_advanced.1836817395.aliases.#:    "0"
+      networks_advanced.1836817395.ipv4_address: "172.20.0.3"
+      networks_advanced.1836817395.ipv6_address: ""
+      networks_advanced.1836817395.name:         "dbnet"
       ports.#:                                   "1"
       ports.0.external:                          "3306"
       ports.0.internal:                          "3306"
@@ -103,7 +103,7 @@ Terraform will perform the following actions:
       user:                                      <computed>
 
   + docker_container.phpmyadmin
-      id:                                        <computed>                                                                                 
+      id:                                        <computed>                  
       attach:                                    "false"
       bridge:                                    <computed>
       command.#:                                 <computed>
@@ -126,10 +126,10 @@ Terraform will perform the following actions:
       name:                                      "php_admin"
       network_data.#:                            <computed>
       networks_advanced.#:                       "1"
-      networks_advanced.3003536902.aliases.#:    "0"
-      networks_advanced.3003536902.ipv4_address: ""
-      networks_advanced.3003536902.ipv6_address: ""
-      networks_advanced.3003536902.name:         "dbnet"
+      networks_advanced.1836817395.aliases.#:    "0"
+      networks_advanced.1836817395.ipv4_address: "172.20.0.3"
+      networks_advanced.1836817395.ipv6_address: ""
+      networks_advanced.1836817395.name:         "dbnet"
       ports.#:                                   "1"
       ports.0.external:                          "80"
       ports.0.internal:                          "8080"
@@ -143,22 +143,22 @@ Terraform will perform the following actions:
       user:                                      <computed>
 
   + docker_image.iptables
-      id:                                        <computed>                                                                                 
+      id:                                        <computed>                  
       latest:                                    <computed>
       name:                                      "paulczar/iptables:master"
 
   + docker_image.mysql-server
-      id:                                        <computed>                                                                                 
+      id:                                        <computed>                  
       latest:                                    <computed>
       name:                                      "mysql/mysql-server:latest"
 
   + docker_image.phpmyadmin
-      id:                                        <computed>                                                                                 
+      id:                                        <computed>                  
       latest:                                    <computed>
       name:                                      "phpmyadmin/phpmyadmin:latest"
 
   + docker_network.private_network
-      id:                                        <computed>                                                                                 
+      id:                                        <computed>                  
       driver:                                    "bridge"
       internal:                                  <computed>
       ipam_config.#:                             "1"
