@@ -10,7 +10,7 @@ sudo docker run --name mysql_server --net dbnet -e MYSQL_ROOT_HOST=% -e MYSQL_DA
 
 sudo docker run --name php_admin --net dbnet -e PMA_HOST=mysql_server -d -p 8080:80 phpmyadmin/phpmyadmin:latest
 
-sudo docker run --name firewall --net host -e TCP_PORTS=8080,3306 -e HOSTS=172.20.0.0/16 --cap-add=NET_ADMIN paulczar/iptables:master
+sudo docker run --name firewall --net host -e TCP_PORTS=8080,3306 -e HOSTS=172.20.0.0/16 --cap-add=NET_ADMIN -d paulczar/iptables:master
 
 iptables -A INPUT -i dbnet -j ACCEPT
 
