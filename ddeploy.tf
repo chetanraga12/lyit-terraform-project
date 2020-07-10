@@ -51,6 +51,7 @@ resource "docker_container" "mysql-server" {
   restart = "always"
   networks_advanced {
   	name = "dbnet"
+    ipv4_address = "172.20.0.2"
   }
   env = [
     "MYSQL_ROOT_HOST=%",
@@ -77,6 +78,7 @@ resource "docker_container" "phpmyadmin" {
   restart = "always"
   networks_advanced {
   	name = "dbnet"
+    ipv4_address = "172.20.0.3"
   }
   env = [
     "PMA_HOST=mysql_server"
